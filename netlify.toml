@@ -1,9 +1,11 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    # Permitir que site seja embebido no Systeme.io
-    X-Frame-Options = "ALLOWALL"
-    Content-Security-Policy = "frame-ancestors 'self' https://*.systeme.io https://*.cloudfront.net"
+    # Permitir que site seja embebido em qualquer domínio
+    # REMOVER X-Frame-Options para permitir iframe
+    # X-Frame-Options só aceita: DENY, SAMEORIGIN, ou ALLOW-FROM (deprecated)
+    # Usar Content-Security-Policy frame-ancestors em vez disso
+    Content-Security-Policy = "frame-ancestors *"
 
     # Security headers
     X-Content-Type-Options = "nosniff"
