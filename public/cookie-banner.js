@@ -276,26 +276,16 @@
         },
 
         loadMarketingScripts: function() {
-            // Facebook Pixel
-            if (!window.fbq) {
-                !function(f,b,e,v,n,t,s)
-                {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-                n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-                if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-                n.queue=[];t=b.createElement(e);t.async=!0;
-                t.src=v;s=b.getElementsByTagName(e)[0];
-                s.parentNode.insertBefore(t,s)}(window, document,'script',
-                'https://connect.facebook.net/en_US/fbevents.js');
+            // IMPORTANTE: Enviar evento para GTM (não carregar scripts diretamente)
+            // Facebook Pixel e outros marketing scripts devem ser geridos pelo GTM
 
-                // Replace with your Facebook Pixel ID
-                // fbq('init', 'YOUR_PIXEL_ID');
-                // fbq('track', 'PageView');
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'event': 'cookie_consent_marketing',
+                'marketing_consent': true
+            });
 
-                console.log('Facebook Pixel loaded with consent');
-            }
-
-            // LinkedIn Insight Tag
-            // Add LinkedIn Insight Tag code here if needed
+            console.log('Marketing consent: evento enviado para GTM');
         },
 
         // Cookie utilities
